@@ -16,3 +16,11 @@ Followed TDD strictly throughout — wrote each test before touching the impleme
 Started simple (empty string, single number) and let the design emerge from the tests rather than planning it upfront. The delimiter extraction ended up as a separate function naturally once the custom delimiter cases came in.
 
 One thing I was deliberate about: keeping the main `add()` function readable at a glance. The helper functions (`parseDelimiter`, `escape`) exist to keep that top-level function clean, not to show off abstraction.
+
+## Tests
+
+![Test Results](./test_results.png)
+
+## Coverage
+
+![Coverage Report](./test-coverage.png)
