@@ -29,4 +29,10 @@ describe('add()', () => {
     expect(add('//|\n4|5|6')).toBe(15);
   });
 
+  it('throws for negative numbers and lists all of them', () => {
+    expect(() => add('-1,2')).toThrow('negatives not allowed: -1');
+    expect(() => add('1,-2,-3')).toThrow('negatives not allowed: -2, -3');
+  });
+
+
 });
