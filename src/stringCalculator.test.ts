@@ -44,5 +44,10 @@ describe('add()', () => {
     expect(add('//[---]\n10---20---30')).toBe(60);
   });
 
+  it('supports multiple delimiters at once', () => {
+    expect(add('//[*][%]\n1*2%3')).toBe(6);
+    expect(add('//[**][%%]\n2**3%%5')).toBe(10);
+  });
+
 
 });
