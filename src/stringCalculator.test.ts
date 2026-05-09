@@ -11,4 +11,8 @@ describe('add()', () => {
     expect(add('9')).toBe(9);
   });
 
+  it('adds two comma-separated numbers', () => {
+    expect(add('1,2')).toBe(3);
+  });
+
 });
