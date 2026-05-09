@@ -14,8 +14,16 @@ export function add(input: string): number {
     delimiter = new RegExp(escape(header));
   }
 
-  return numbers.split(delimiter).map(Number).reduce((a, b) => a + b, 0);
+  const parsed = numbers.split(delimiter).map(Number);
+
+  const negatives = parsed.filter(n => n < 0);
+  if (negatives.length) {
+    throw new Error(`negatives not allowed: ${negatives.join(', ')}`);
+  }
+
+  return parsed.filter(n => n <= 1000).reduce((a, b) => a + b, 0);
 }
+
 
 function escape(str: string): string {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
