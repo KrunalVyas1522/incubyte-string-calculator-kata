@@ -49,5 +49,9 @@ describe('add()', () => {
     expect(add('//[**][%%]\n2**3%%5')).toBe(10);
   });
 
+  it('handles edge cases combining multiple rules', () => {
+    expect(add('//;\n2;1001;3')).toBe(5);
+    expect(() => add('//;\n1;-2;3')).toThrow('negatives not allowed: -2');
+  });
 
 });
