@@ -39,4 +39,10 @@ describe('add()', () => {
     expect(add('2,1000')).toBe(1002); // 1000 is still counted
   });
 
+  it('supports multi-character delimiters', () => {
+    expect(add('//[***]\n1***2***3')).toBe(6);
+    expect(add('//[---]\n10---20---30')).toBe(60);
+  });
+
+
 });
