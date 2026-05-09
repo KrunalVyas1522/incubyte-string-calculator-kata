@@ -15,4 +15,9 @@ describe('add()', () => {
     expect(add('1,2')).toBe(3);
   });
 
+  it('handles any amount of numbers', () => {
+    expect(add('1,2,3,4,5')).toBe(15);
+  });
+
+
 });
