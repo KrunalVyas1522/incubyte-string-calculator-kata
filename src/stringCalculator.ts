@@ -11,7 +11,7 @@ export function add(input: string): number {
     const newlineIndex = input.indexOf('\n');
     const header = input.substring(2, newlineIndex);
     numbers = input.substring(newlineIndex + 1);
-    delimiter = new RegExp(escape(header));
+    delimiter = parseDelimiter(header);
   }
 
   const parsed = numbers.split(delimiter).map(Number);
@@ -22,6 +22,15 @@ export function add(input: string): number {
   }
 
   return parsed.filter(n => n <= 1000).reduce((a, b) => a + b, 0);
+}
+
+function parseDelimiter(header: string): RegExp {
+  if (header.startsWith('[')) {
+    const parts = header.match(/\[([^\]]+)\]/g) ?? [];
+    const escaped = parts.map(p => escape(p.slice(1, -1)));
+    return new RegExp(escaped.join('|'));
+  }
+  return new RegExp(escape(header));
 }
 
 
